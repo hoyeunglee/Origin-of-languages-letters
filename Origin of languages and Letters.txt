@@ -1,0 +1,65 @@
+MonthPairNumber := proc()
+bx := []:
+for bb from 1 to 99 do
+ ax := new Table():
+ bx := [op(bx), ax];
+od:
+for bb from 1 to 99 do
+#ax := new Table();
+for aa from 1 to 99 do
+   xx := aa*bb:
+   oo := (xx - (xx mod 1000))/1000 + ((xx mod 1000) - (xx mod 100))/100 + ((xx mod 100) - (xx mod 10))/10 + (xx mod 10);
+   bx[bb][oo] := [op(bx[bb][oo]), aa]:
+   #print("female month ",((aa mod 100) - (aa mod 10))/10, "male month",(aa mod 10)," result ", oo);
+od:
+#bx := [op(bx), ax]:
+od:
+return bx:
+end proc:
+bx := MonthPairNumber();
+
+maxletters := []:
+for bb from 1 to nops(bx) do
+print("*************",bb):
+ax := bx[bb]:
+maxletters := [op(maxletters), max(map(lhs, op(op(ax))))]:
+for aa from min(map(lhs, op(op(ax)))) to max(map(lhs, op(op(ax)))) do
+ print(aa, ax[aa]):
+od:
+print("**********************"):
+od:
+max(maxletters);
+min(maxletters);
+with(ListTools):
+SearchAll(33,maxletters);
+SearchAll(28, maxletters);
+for aa from min(maxletters) to max(maxletters) do
+ #print(aa, map2(cat, "getnumber(\"", [SearchAll(aa, maxletters)]));
+ print(aa, SearchAll(aa, maxletters));
+od:
+
+ax := bx[83]:
+for aa from 3 to 26 do
+ print(aa, ax[aa]):
+od:
+
+yearnumber := 28:
+ax := bx[yearnumber]:
+max(map(lhs, op(bx[yearnumber])));
+for aa from 1 to max(map(lhs, op(bx[yearnumber]))) do
+ print(aa, ax[aa]):
+od:
+
+yearnumber := 93:
+ax := bx[yearnumber]:
+max(map(lhs, op(bx[yearnumber])));
+for aa from 1 to max(map(lhs, op(bx[yearnumber]))) do
+ print(aa, ax[aa]):
+od:
+
+yearnumber := 86:
+ax := bx[yearnumber]:
+max(map(lhs, op(bx[yearnumber])));
+for aa from 1 to max(map(lhs, op(bx[yearnumber]))) do
+ print(aa, ax[aa]):
+od:
